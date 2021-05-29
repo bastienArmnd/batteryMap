@@ -1,2 +1,2 @@
 # batteryMap
-Experimental map visualisation of battery minerals ressource intensity
+Experimental map visualisation of battery minerals ressource intensity.
