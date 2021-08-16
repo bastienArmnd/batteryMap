@@ -5,6 +5,7 @@ import os
 m = folium.Map(location=[50.358002, 3.523300], zoom_start=12)
 
 tooltip = "Click for more info"
+variable = "vito"
 
 overlay = os.path.join("data", 'overlay.json')
 
