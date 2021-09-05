@@ -3,6 +3,12 @@ body {
     padding: 0;
 }
 
+a {
+    color: rgb(0, 0, 0);
+    font-family: 'Antic Slab', serif;
+    padding: 5px;
+}
+
 #map {
     position: absolute;
     top: 0;
@@ -26,4 +32,61 @@ body {
 .mapboxgl-popup-content {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
+}
+
+#panel-info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    justify-content: center;
+
+    border: 3px solid #8b8b8b;
+    border-radius: 1%;
+    background-color: rgb(194, 197, 201);
+    margin: 40px;
+    width: 260px;
+    height: 120px;
+}
+
+#nickel-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background-color: #7f91c4;
+    transition: all .1s ease-in-out;
+}
+
+#cobalt-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background-color: #c4b27f;
+    transition: all .1s ease-in-out;
+}
+
+#aluminium-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background-color: azure;
+    transition: all .1s ease-in-out;
+}
+
+#nickel-box:hover {
+    flex-grow: 4;
+}
+
+#cobalt-box:hover {
+    flex-grow: 4;
+}
+
+#aluminium-box:hover {
+    flex-grow: 4;
 }

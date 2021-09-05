@@ -10,67 +10,100 @@ const map = new mapboxgl.Map({
 
 // Add customized visuals when map loads
 map.on('load', () => {
-    // Add a data source containing GeoJSON data.
-    map.addSource('indo-china-route', {
-        'type': 'geojson',
-        'data': "./geojson/ID-to-CH-route.json"
+    
+    let hoveredStateId = null;
+
+    map.addSource('nickel-producers', {
+        type: 'geojson',
+        data: './geojson/nickel-producers-countries.geojson'
     });
 
-    // Colour the road in black
+    map.addSource('cobalt-producers', {
+        type: 'geojson',
+        data: './geojson/cobalt-producers-countries.geojson'
+    });
+
     map.addLayer({
-        'id': 'outline',
-        'type': 'line',
-        'source': 'indo-china-route',
+        'id': 'nickel-producers',
+        'type': 'fill',
+        'source': 'nickel-producers',
         'layout': {},
         'paint': {
-            'line-color': '#000',
-            'line-width': 3
+            'fill-color': '#627BC1',
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                0.5,
+                0.2
+            ]
         }
     });
-});
 
-// Add 2 battery markers for example
-const geojson = {
-    type: 'FeatureCollection',
-    features: [
-        {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [-77.032, 38.913]
-            },
-            properties: {
-                title: 'Mapbox',
-                description: 'Washington, D.C.'
-            }
-        },
-        {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [-122.414, 37.776]
-            },
-            properties: {
-                title: 'Mapbox',
-                description: 'San Francisco, California'
-            }
+    map.addLayer({
+        'id': 'cobalt-producers',
+        'type': 'fill',
+        'source': 'cobalt-producers',
+        'layout': {},
+        'paint': {
+            'fill-color': '#C4B27F',
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                0.5,
+                0.2
+            ]
         }
-    ]
-};
+    });
 
-for (const { geometry, properties } of geojson.features) {
-    // create a HTML element for each feature
-    const el = document.createElement('div');
-    el.className = 'marker';
+    // When the user moves their mouse over the state-fill layer, we'll update the
+    // feature state for the feature under the mouse.
 
-    // make a marker for each feature and add to the map
-    new mapboxgl.Marker(el).setLngLat(geometry.coordinates).addTo(map);
-    new mapboxgl.Marker(el)
-        .setLngLat(geometry.coordinates)
-        .setPopup(
-            new mapboxgl.Popup({ offset: 25 }) // add popups
-                .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p>`)
-        )
-        .addTo(map);
-}
+    function onMouseHoverCountry(sourceId) {
+        map.on('mousemove', sourceId, (e) => {
 
+            function fillStateFunction(e, geoJsonName) {
+                if (e.features.length > 0) {
+                    if (hoveredStateId !== null) {
+                        map.setFeatureState(
+                            { source: geoJsonName, id: hoveredStateId },
+                            { hover: false }
+                        );
+                    }
+                    hoveredStateId = e.features[0].id;
+                    map.setFeatureState(
+                        { source: geoJsonName, id: hoveredStateId },
+                        { hover: true }
+                    );
+                }
+            }
+    
+            fillStateFunction(e, sourceId);
+        });
+    }
+    
+    onMouseHoverCountry('cobalt-producers')
+    onMouseHoverCountry('nickel-producers')
+
+    // When the mouse leaves the state-fill layer, update the feature state of the
+    // previously hovered feature.
+
+    function offMouseHoverCountry(sourceId) {
+        map.on('mouseleave', sourceId, () => {
+
+            function emptyStateFunction(geoJsonName) {
+                if (hoveredStateId !== null) {
+                    map.setFeatureState(
+                        { source: geoJsonName, id: hoveredStateId },
+                        { hover: false }
+                    );
+                }
+                hoveredStateId = null;
+            }
+    
+            emptyStateFunction(sourceId)
+        });
+    }
+
+    offMouseHoverCountry('nickel-producers')
+    offMouseHoverCountry('cobalt-producers')
+});
