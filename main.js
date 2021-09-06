@@ -55,6 +55,24 @@ map.on('load', () => {
         }
     });
 
+    map.on('mouseenter', 'nickel-producers', () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'nickel-producers', () => {
+        map.getCanvas().style.cursor = '';
+    });
+
+    map.on('mouseenter', 'cobalt-producers', () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'cobalt-producers', () => {
+        map.getCanvas().style.cursor = '';
+    });
+
     // When the user moves their mouse over the state-fill layer, we'll update the
     // feature state for the feature under the mouse.
 
