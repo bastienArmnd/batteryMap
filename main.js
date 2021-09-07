@@ -33,8 +33,8 @@ map.on('load', () => {
             'fill-opacity': [
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
-                0.5,
-                0.2
+                0.2,
+                0.5
             ]
         }
     });
@@ -49,8 +49,8 @@ map.on('load', () => {
             'fill-opacity': [
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
-                0.5,
-                0.2
+                0.2,
+                0.5
             ]
         }
     });
@@ -125,3 +125,11 @@ map.on('load', () => {
     offMouseHoverCountry('nickel-producers')
     offMouseHoverCountry('cobalt-producers')
 });
+
+// var bbox_nickel = turf.bbox(JSON.parse("./geojson/nickel-producers-countries.geojson").features[0].geometry.coordinates);
+var bbox_nickel = turf.extent(map.querySourceFeatures('nickel-producers'));
+// var coordinates_nickel = bbox_nickel.features[0].geometry.coordinates;
+
+function fitNickel() {
+    map.fitBounds(bbox_nickel, {padding: 20});
+}
