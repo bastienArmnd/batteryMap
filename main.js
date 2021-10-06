@@ -124,6 +124,8 @@ map.on('load', () => {
 
     offMouseHoverCountry('nickel-producers')
     offMouseHoverCountry('cobalt-producers')
+
+const size = 150;
 // This implements `StyleImageInterface`
 // to draw a pulsing dot icon on the map.
 const pulsingDot = {
