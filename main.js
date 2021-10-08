@@ -139,13 +139,11 @@ const places = {
     },
     'geometry': {
     'type': 'Point',
-    'coordinates': [-2.5458333333333, 121.3525]
+    'coordinates': [121.3525, -2.5458333333333]
     }
     },
     ]
     };
-     
-    map.on('load', () => {
     // Add a GeoJSON source containing place coordinates and information.
     map.addSource('places', {
     'type': 'geojson',
@@ -264,8 +262,7 @@ const places = {
             'icon-image': 'pulsing-dot'
         }
     });
-    }
-,);
+;
 
 // var bbox_nickel = turf.bbox(JSON.parse("./geojson/nickel-producers-countries.geojson").features[0].geometry.coordinates);
 // var bbox_nickel = turf.extent(map.querySourceFeatures('nickel-producers'));
