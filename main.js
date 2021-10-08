@@ -162,8 +162,6 @@ const places = {
     'icon-image': ['get', 'icon']
     }
     });
-     
-    map.rotateTo(180, { duration: 10000 });
     });
 
     const size = 150;
