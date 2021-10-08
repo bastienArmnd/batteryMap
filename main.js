@@ -125,6 +125,49 @@ map.on('load', () => {
     offMouseHoverCountry('nickel-producers')
     offMouseHoverCountry('cobalt-producers')
 
+    // This GeoJSON contains features that include an "icon"
+// property. The value of the "icon" property corresponds
+// to an image in the Mapbox Light style's sprite.
+const places = {
+    'type': 'FeatureCollection',
+    'features': [
+    {
+    'type': 'Feature',
+    'properties': {
+    'description': "Sorowako Mine",
+    'icon': 'theatre-15'
+    },
+    'geometry': {
+    'type': 'Point',
+    'coordinates': [-2.5458333333333, 121.3525]
+    }
+    },
+    ]
+    };
+     
+    map.on('load', () => {
+    // Add a GeoJSON source containing place coordinates and information.
+    map.addSource('places', {
+    'type': 'geojson',
+    'data': places
+    });
+     
+    map.addLayer({
+    'id': 'poi-labels',
+    'type': 'symbol',
+    'source': 'places',
+    'layout': {
+    'text-field': ['get', 'description'],
+    'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+    'text-radial-offset': 0.5,
+    'text-justify': 'auto',
+    'icon-image': ['get', 'icon']
+    }
+    });
+     
+    map.rotateTo(180, { duration: 10000 });
+    });
+
     const size = 150;
     // This implements `StyleImageInterface`
     // to draw a pulsing dot icon on the map.
