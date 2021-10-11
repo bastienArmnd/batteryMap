@@ -125,11 +125,11 @@ map.on('load', () => {
     offMouseHoverCountry('nickel-producers')
     offMouseHoverCountry('cobalt-producers')
  
-    const monument = [-77.0353, 38.8895];
+    const monument = [121.3525, -2.5458333333333];
 
     // create the popup
-    const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-        'Construction on the Washington Monument began in 1848.'
+    const popup = new mapboxgl.Popup({ offset: 55 }).setText(
+        'Sorowako Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation'
     );
 
     // create DOM element for the marker
