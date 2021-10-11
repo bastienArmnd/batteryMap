@@ -124,45 +124,25 @@ map.on('load', () => {
 
     offMouseHoverCountry('nickel-producers')
     offMouseHoverCountry('cobalt-producers')
+ 
+    const monument = [-77.0353, 38.8895];
 
-    // This GeoJSON contains features that include an "icon"
-// property. The value of the "icon" property corresponds
-// to an image in the Mapbox Light style's sprite.
-const places = {
-    'type': 'FeatureCollection',
-    'features': [
-    {
-    'type': 'Feature',
-    'properties': {
-    'description': "Sorowako Mine",
-    'icon': 'theatre-15'
-    },
-    'geometry': {
-    'type': 'Point',
-    'coordinates': [121.3525, -2.5458333333333]
-    }
-    },
-    ]
-    };
-    // Add a GeoJSON source containing place coordinates and information.
-    map.addSource('places', {
-    'type': 'geojson',
-    'data': places
+    // create the popup
+    const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        'Construction on the Washington Monument began in 1848.'
+    );
+
+    // create DOM element for the marker
+    const el = document.createElement('div');
+    el.id = 'marker';
+
+    // create the marker
+    new mapboxgl.Marker(el)
+        .setLngLat(monument)
+        .setPopup(popup) // sets a popup on this marker
+        .addTo(map);
     });
-     
-    map.addLayer({
-    'id': 'poi-labels',
-    'type': 'symbol',
-    'source': 'places',
-    'layout': {
-    'text-field': ['get', 'description'],
-    'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-    'text-radial-offset': 0.5,
-    'text-justify': 'auto',
-    'icon-image': ['get', 'icon']
-    }
-    });
-    });
+    ;
 
     const size = 150;
     // This implements `StyleImageInterface`
