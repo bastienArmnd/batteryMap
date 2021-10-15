@@ -143,22 +143,29 @@ map.on('load', () => {
     offMouseHoverCountry('nickel-producers')
     offMouseHoverCountry('cobalt-producers')
  
-    const monument = [121.3525, -2.5458333333333];
-
+    const Sorowako = [121.3525, -2.5458333333333];
+    const goro = [167.0166666, -22.2833322]
+    
     // create the popup
     const popup = new mapboxgl.Popup({ offset: 25 }).setText(
         'Sorowako Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation'
     );
 
     // create DOM element for the marker
-    const el = document.createElement('div');
-    el.id = 'marker';
+    const el1 = document.createElement('div');
+    const el2 = document.createElement('div');
+    el1.id = 'marker1';
+    el2.id= 'marker2';
 
     // create the marker
-    new mapboxgl.Marker(el)
-        .setLngLat(monument)
+    new mapboxgl.Marker(el1)
+        .setLngLat(Sorowako)
         .setPopup(popup) // sets a popup on this marker
         .addTo(map);
-    }
+
+    new mapboxgl.Marker(el2)
+        .setLngLat(goro)
+        .setPopup(popup) // sets a popup on this marker
+        .addTo(map);}
 ,
 );
