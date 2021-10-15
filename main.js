@@ -8,6 +8,16 @@ const map = new mapboxgl.Map({
     zoom: 3
 });
 
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+  }
+
 // Add customized visuals when map loads
 map.on('load', () => {
 
@@ -151,13 +161,4 @@ map.on('load', () => {
         .addTo(map);
     }
 ,
-function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-  }
-,   
-function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-}
 );

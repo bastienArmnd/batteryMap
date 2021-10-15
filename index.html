@@ -19,7 +19,21 @@
 </head>
 <body>
 
-    <div id='map'></div>
+    <div id='map'>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+          </div>
+          
+          
+          <div id="main">
+            <button class="openbtn" onclick="openNav()">☰ Toggle Sidebar</button>  
+           <div id='map'></div>
+        </div>
+    </div>
 
     <div id='panel-info'>
         <div id='nickel-box' onclick='fitNickel()'> 
@@ -34,19 +48,5 @@
     </div>
 
     <script src="main.js"></script>
-    
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-      </div>
-      
-      
-      <div id="main">
-        <button class="openbtn" onclick="openNav()">☰ Toggle Sidebar</button>  
-       <div id='map'></div>
-      </div>
 </body>
 </html>
