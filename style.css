@@ -2,6 +2,26 @@ body {
     margin: 0;
     padding: 0;
 }
+
+a {
+    color: rgb(0, 0, 0);
+    font-family: 'Antic Slab', serif;
+    padding: 5px;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.map-container {
+    position: relative;
+}
+
+/* Sidebar ---------- */
+
 .sidebar {
     height: 100%;
     width: 0;
@@ -9,7 +29,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: rgb(119, 119, 119);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -19,10 +39,11 @@ body {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: #cccccc;
     display: block;
     transition: 0.3s;
   }
+
 .sidebar a:hover {
     color: #f1f1f1;
   }
@@ -30,7 +51,7 @@ body {
 .sidebar .closebtn {
     position: absolute;
     top: 0;
-    right: 25px;
+    right: 15px;
     font-size: 36px;
     margin-left: 50px;
   }
@@ -38,7 +59,7 @@ body {
 .openbtn {
     font-size: 20px;
     cursor: pointer;
-    background-color: #111;
+    background-color:rgb(119, 119, 119);
     color: white;
     padding: 10px 15px;
     border: none;    
@@ -52,40 +73,71 @@ body {
 .openbtn:hover {
     background-color: #444;
   }  
-  #main {
-    position:relative;
-    transition: margin-left .5s;
-    padding: 16px;
-    height:100%;
-  }   
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
-  }   
-  
- 
 
-  a {
-    color: rgb(0, 0, 0);
-    font-family: 'Antic Slab', serif;
-    padding: 5px;
-}
+/* ------------------------------------ */  
 
-#map {
+
+#mineral-info {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
+    top: 0px;
+    right: 0px;
+    flex-direction: column;
+    display:flex;
+    border: 3px solid #8b8b8b;
+    border-radius: 1%;
+    background-color: rgb(194, 197, 201);
+    margin: 40px;
+    width: 260px;
+    height: 120px;
 }
+
+.mineral-info-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    transition: all .1s ease-in-out;
+    cursor: pointer;
+}
+
+.mineral-info-box:hover{
+    flex-grow: 4;
+}
+
+.nickel.mineral-info-box {
+    background-color: #5179A0;
+}
+
+.cobalt.mineral-info-box {
+    background-color: azure;
+}
+
+.aluminium.mineral-info-box {
+    background-color: #ECCA85;
+}
+
+/* Markers ---------- */
 
 .marker {
-    background-image: url('/img/Illustration-of-battery-design-Clipart-PNG.png');
     background-size: cover;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
     cursor: pointer;
+}
+
+.marker:hover{
+    width: 60px;
+    height: 60px;
+    transition: all .2s;
+}
+
+
+.marker.goro {
+    background-image: url('./img/crystals.png');
+}
+.marker.sorowako {
+    background-image: url('./img/crystals.png');
 }
 
 .mapboxgl-popup {
@@ -97,84 +149,5 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-#panel-info {
-    position: relative;
-    margin-right: 0;
-    align-items: flex-end;
-    display: flex;
-    flex-direction: column;
-    /* align-content: stretch; */
-    justify-content: center;
+/* ------------------------------------ */
 
-    border: 3px solid #8b8b8b;
-    border-radius: 1%;
-    background-color: rgb(194, 197, 201);
-    margin: 40px;
-    width: 260px;
-    height: 120px;
-}
-
-#nickel-box {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    background-color: #7f91c4;
-    transition: all .1s ease-in-out;
-    cursor: pointer;
-}
-
-#cobalt-box {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    background-color: #c4b27f;
-    transition: all .1s ease-in-out;
-    cursor: pointer;
-}
-
-#aluminium-box {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    background-color: azure;
-    transition: all .1s ease-in-out;
-    cursor: pointer;
-}
-
-#nickel-box:hover {
-    flex-grow: 4;
-}
-
-#cobalt-box:hover {
-    flex-grow: 4;
-}
-
-#aluminium-box:hover {
-    flex-grow: 4;
-}
-#marker1 {
-    background-image: url('./img/nickel-mine.png');
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-#marker2 {
-    background-image: url('./img/nickel-mine.png');
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.mapboxgl-popup {
-    max-width: 100px;
-}

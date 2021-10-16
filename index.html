@@ -19,33 +19,38 @@
 </head>
 <body>
 
-    <div id='map'>
-        <div id="mySidebar" class="sidebar">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-          </div>
-          
-          
-          <div id="main">
-            <button class="openbtn" onclick="openNav()">☰ Toggle Sidebar</button>  
-           <div id='map'></div>
+    <div id="map-container">
+        <div id='map'>
+
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+              </div>
+              
+              
+              <div id="main">
+                <button class="openbtn" onclick="openNav()">☰</button>  
+               <div id='map'></div>
+            </div>
+        </div>
+    
+        <div id='mineral-info'>
+            <div class='nickel mineral-info-box'> 
+                <a>Biggest producers of nickel</a>
+            </div>
+            <div class='cobalt mineral-info-box'>
+                <a>Biggest producers of cobalt</a>
+            </div>
+            <div class='aluminium mineral-info-box'>
+                <a>Biggest producers of aluminium</a>
+            </div>
         </div>
     </div>
 
-    <div id='panel-info'>
-        <div id='nickel-box' onclick='fitNickel()'> 
-            <a>Biggest producers of nickel</a>
-        </div>
-        <div id='cobalt-box'>
-            <a>Biggest producers of cobalt</a>
-        </div>
-        <div id='aluminium-box'>
-            <a>Biggest producers of aluminium</a>
-        </div>
-    </div>
+    
 
     <script src="main.js"></script>
 </body>
