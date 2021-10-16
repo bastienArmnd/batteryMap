@@ -10,11 +10,47 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap" rel="stylesheet">
 
 </head>
 <body>
 
-    <div id='map'></div>
+    <div id="map-container">
+        <div id='map'>
+
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+              </div>
+              
+              
+              <div id="main">
+                <button class="openbtn" onclick="openNav()">☰</button>  
+               <div id='map'></div>
+            </div>
+        </div>
+    
+        <div id='mineral-info'>
+            <div class='nickel mineral-info-box'> 
+                <a>Biggest producers of nickel</a>
+            </div>
+            <div class='cobalt mineral-info-box'>
+                <a>Biggest producers of cobalt</a>
+            </div>
+            <div class='aluminium mineral-info-box'>
+                <a>Biggest producers of aluminium</a>
+            </div>
+        </div>
+    </div>
+
+    
 
     <script src="main.js"></script>
 </body>
