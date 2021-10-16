@@ -144,28 +144,62 @@ map.on('load', () => {
     offMouseHoverCountry('cobalt-producers')
  
     const Sorowako = [121.3525, -2.5458333333333];
-    const goro = [167.0166666, -22.2833322]
-    
+    const goro = [167.0166666, -22.2833322];
+    const wedabay = [127.94775, 0.47158];
+    const teslagiga = [13.8, 52.4];
+    const CATL = [11.033333, 50.983334]
+
     // create the popup
-    const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+    const popup1 = new mapboxgl.Popup({ offset: 25 }).setText(
         'Sorowako Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation'
     );
-
+    const popup2 = new mapboxgl.Popup({ offset: 25 }).setText(
+        'Goro Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation'
+    );
+    const popup3 = new mapboxgl.Popup({ offset: 25 }).setText(
+        'Weda Bay nickel Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation'
+    );
+    const popup4 = new mapboxgl.Popup({ offset: 25 }).setText(
+        'Tesla Gigafactory'
+    );
+    const popup5 = new mapboxgl.Popup({ offset: 25 }).setText(
+        'CATL Gigafactory'
+    );
     // create DOM element for the marker
     const el1 = document.createElement('div');
     const el2 = document.createElement('div');
+    const el3 = document.createElement('div');
+    const el4 = document.createElement('div');
+    const el5 = document.createElement('div');
+
     el1.id = 'marker1';
-    el2.id= 'marker2';
+    el2.id = 'marker2';
+    el3.id = 'marker3';
+    el4.id = 'marker4';
+    el5.id = 'marker5';
 
     // create the marker
     new mapboxgl.Marker(el1)
         .setLngLat(Sorowako)
-        .setPopup(popup) // sets a popup on this marker
+        .setPopup(popup1) // sets a popup on this marker
         .addTo(map);
-
     new mapboxgl.Marker(el2)
         .setLngLat(goro)
-        .setPopup(popup) // sets a popup on this marker
+        .setPopup(popup2) // sets a popup on this marker
+        .addTo(map);
+    new mapboxgl.Marker(el3)
+        .setLngLat(wedabay)
+        .setPopup(popup3) // sets a popup on this marker
+        .addTo(map);
+    
+    new mapboxgl.Marker(el4)
+        .setLngLat(teslagiga)
+        .setPopup(popup4) // sets a popup on this marker
+        .addTo(map);
+    
+    new mapboxgl.Marker(el5)
+        .setLngLat(CATL)
+        .setPopup(popup5) // sets a popup on this marker
         .addTo(map);}
 ,
 );

@@ -174,7 +174,30 @@ body {
     border-radius: 50%;
     cursor: pointer;
 }
-
+#marker3 {
+    background-image: url('./img/nickel-mine.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#marker4 {
+    background-image: url('./img/brand.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#marker5 {
+    background-image: url('./img/Contemporary_Amperex_Technology-Logo.wine.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
 .mapboxgl-popup {
     max-width: 100px;
 }
