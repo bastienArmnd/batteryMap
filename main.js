@@ -150,15 +150,7 @@ map.on('load', () => {
     const CATL = [11.033333, 50.983334]
 
     // create the popup
-<<<<<<< HEAD
     const popup1 = new mapboxgl.Popup({ offset: 25 }).setText(
-=======
-    const popup1 = new mapboxgl.Popup({ offset: 30 }).setText(
-        'Sorowako Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation'
-    );
-
-    const popup2 = new mapboxgl.Popup({ offset: 30 }).setText(
->>>>>>> ef017961739d3bf90dd2d17147ae951e37c31278
         'Sorowako Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation'
     );
     const popup2 = new mapboxgl.Popup({ offset: 25 }).setText(
@@ -176,7 +168,6 @@ map.on('load', () => {
     // create DOM element for the marker
     const el1 = document.createElement('div');
     const el2 = document.createElement('div');
-<<<<<<< HEAD
     const el3 = document.createElement('div');
     const el4 = document.createElement('div');
     const el5 = document.createElement('div');
@@ -186,23 +177,14 @@ map.on('load', () => {
     el3.id = 'marker3';
     el4.id = 'marker4';
     el5.id = 'marker5';
-=======
-    el1.className = 'marker goro';
-    el2.className= 'marker sorowako';
->>>>>>> ef017961739d3bf90dd2d17147ae951e37c31278
 
     // create the marker
     new mapboxgl.Marker(el1)
         .setLngLat(Sorowako)
-<<<<<<< HEAD
         .setPopup(popup1) // sets a popup on this marker
-=======
-        .setPopup(popup1)
->>>>>>> ef017961739d3bf90dd2d17147ae951e37c31278
         .addTo(map);
     new mapboxgl.Marker(el2)
         .setLngLat(goro)
-<<<<<<< HEAD
         .setPopup(popup2) // sets a popup on this marker
         .addTo(map);
     new mapboxgl.Marker(el3)
@@ -218,9 +200,6 @@ map.on('load', () => {
     new mapboxgl.Marker(el5)
         .setLngLat(CATL)
         .setPopup(popup5) // sets a popup on this marker
-=======
-        .setPopup(popup2)
->>>>>>> ef017961739d3bf90dd2d17147ae951e37c31278
         .addTo(map);}
 ,
 );

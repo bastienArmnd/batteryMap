@@ -158,9 +158,8 @@ a {
 #marker5 {
     background-image: url('./img/Contemporary_Amperex_Technology-Logo.wine.png');
     background-size: cover;
-    width: 50px;
+    width: 100px;
     height: 50px;
-    border-radius: 50%;
     cursor: pointer;
 }
 .mapboxgl-popup {
