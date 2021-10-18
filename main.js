@@ -63,7 +63,7 @@ map.on('load', () => {
         'layout': {},
         "maxzoom": 3.5,
         'paint': {
-            'fill-color': '#ECCA85',
+            'fill-color': '#B1CFEC',
             'fill-opacity': [
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
