@@ -145,6 +145,11 @@ map.on('load', () => {
  
     const Sorowako = [121.3525, -2.5458333333333];
     const goro = [167.0166666, -22.2833322]
+
+
+    const goro = [167.0166666, -22.2833322]
+
+
     
     // create the popup
     const popup1 = new mapboxgl.Popup({ offset: 30 }).setText(
