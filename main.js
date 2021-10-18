@@ -8,15 +8,35 @@ const map = new mapboxgl.Map({
     zoom: 3
 });
 
-function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+// Define 2 functions to open and close the sidebar
+let sidebarOpen = false;
+
+function openSidebar(){
+    document.getElementById("mySidebar").style.width = "550px";
+    document.getElementById("openbtn").style.transform = "translateX(+540px)";
+    document.getElementById("openbtn").style.transform += "rotateY(180deg)";
+    document.getElementById("openbtn").style.transition = ".3s"
+    sidebarOpen = true;
 }
-  
-function closeNav() {
+
+function closeSidebar(){
     document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
+    document.getElementById("openbtn").style.transform = "translateX(0px)";
+    document.getElementById("openbtn").style.transform += "rotateY(0deg)";
+    document.getElementById("openbtn").style.transition = ".5s"
+    sidebarOpen = false;
 }
+
+const openbtn = document.querySelector('.openbtn');
+openbtn.addEventListener('click', () => {
+    if(!sidebarOpen) {
+        openbtn.classList.add('close');
+        openSidebar();
+    } else {
+        openbtn.classList.remove('close');
+        closeSidebar();
+    }
+}, false)
 
 // Add customized visuals when map loads
 map.on('load', () => {
@@ -143,66 +163,42 @@ map.on('load', () => {
     offMouseHoverCountry('nickel-producers')
     offMouseHoverCountry('cobalt-producers')
  
-    const Sorowako = [121.3525, -2.5458333333333];
-    const goro = [167.0166666, -22.2833322];
-    const wedabay = [127.94775, 0.47158];
-    const teslagiga = [13.8, 52.4];
-    const CATL = [11.033333, 50.983334];
+    const lngLatSorowako = [121.3525, -2.5458333333333];
+    const lngLatGoro = [167.0166666, -22.2833322];
+    const lngLatWeda = [127.94775, 0.47158];
+    const lngLatTesla = [13.8, 52.4];
+    const lngLatCatl = [11.033333, 50.983334];
     
     // create the popup
-    const popup1 = new mapboxgl.Popup({ offset: 30 }).setText(
+    const popupSorowako = new mapboxgl.Popup({ offset: 30 }).setText(
         'Sorowako Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation'
     );
-    const popup2 = new mapboxgl.Popup({ offset: 30 }).setText(
-        'Sorowako Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation'
+    const popupGoro = new mapboxgl.Popup({ offset: 30 }).setText(
+        'Goro Mine'
     );
-    const popup3 = new mapboxgl.Popup({ offset: 25 }).setText(
-        'Weda Bay nickel Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation'
+    const popupWeda = new mapboxgl.Popup({ offset: 25 }).setText(
+        'Weda Bay Mine'
     );
-    const popup4 = new mapboxgl.Popup({ offset: 25 }).setText(
+    const popupTesla = new mapboxgl.Popup({ offset: 25 }).setText(
         'Tesla Gigafactory'
     );
-    const popup5 = new mapboxgl.Popup({ offset: 25 }).setText(
+    const popupCatl = new mapboxgl.Popup({ offset: 25 }).setText(
         'CATL Gigafactory'
     );
 
-    // create DOM element for the marker
-    const el1 = document.createElement('div');
-    const el2 = document.createElement('div');
-    const el3 = document.createElement('div');
-    const el4 = document.createElement('div');
-    const el5 = document.createElement('div');
-
-    el1.className = 'marker goro';
-    el2.className= 'marker sorowako';
-    el3.className = 'marker weda';
-    el4.className = 'marker Tesla'
-    el5.className = 'marker CATL'
-
-    // create the marker
-    new mapboxgl.Marker(el1)
-        .setLngLat(Sorowako)
-        .setPopup(popup1)
-        .addTo(map);
-
-    new mapboxgl.Marker(el2)
-        .setLngLat(goro)
-        .setPopup(popup2)
-        .addTo(map);
-        
-    new mapboxgl.Marker(el3)
-        .setLngLat(wedabay)
-        .setPopup(popup3) // sets a popup on this marker
-        .addTo(map);
-    
-    new mapboxgl.Marker(el4)
-        .setLngLat(teslagiga)
-        .setPopup(popup4) // sets a popup on this marker
-        .addTo(map);
-    
-    new mapboxgl.Marker(el5)
-        .setLngLat(CATL)
-        .setPopup(popup5) // sets a popup on this marker
-        .addTo(map);}
+    function createMarker(name, popup, lngLat) {
+        const element = document.createElement('div');
+        element.onclick = openSidebar;
+        element.className = 'marker '+name;
+        new mapboxgl.Marker(element)
+            .setLngLat(lngLat)
+            .setPopup(popup)
+            .addTo(map);
+    }
+    createMarker('sorowako', popupSorowako, lngLatSorowako);
+    createMarker('goro', popupGoro, lngLatGoro);
+    createMarker('weda', popupWeda, lngLatWeda);
+    createMarker('tesla', popupTesla, lngLatTesla);
+    createMarker('catl', popupCatl, lngLatCatl);}
 ,
 );
