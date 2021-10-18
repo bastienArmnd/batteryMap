@@ -123,6 +123,7 @@ a {
     background-size: cover;
     width: 50px;
     height: 50px;
+    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -139,8 +140,16 @@ a {
 .marker.sorowako {
     background-image: url('./img/crystals.png');
 }
-
-.mapboxgl-popup {
+.marker.weda {
+    background-image: url('./img/crystals.png');
+}
+.marker.Tesla {
+    background-image: url('./img/tesla-gigafactory-solar-roof-01.jpg');
+}
+.marker.CATL {
+    background-image: url('./img/tesla-gigafactory-solar-roof-01.jpg');
+}
+    .mapboxgl-popup {
     max-width: 50px;
 }
   
