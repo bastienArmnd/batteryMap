@@ -113,19 +113,19 @@ a {
 
 
 .marker.goro {
-    background-image: url('./img/crystals.png');
+    background-image: url('./img/mine-mountain.png');
 }
 .marker.sorowako {
-    background-image: url('./img/crystals.png');
+    background-image: url('./img/mine-mountain.png');
 }
 .marker.weda {
-    background-image: url('./img/crystals.png');
+    background-image: url('./img/mine-mountain.png');
 }
 .marker.tesla {
-    background-image: url('./img/tesla-gigafactory-solar-roof-01.jpg');
+    background-image: url('./img/factory-plant.png');
 }
 .marker.catl {
-    background-image: url('./img/tesla-gigafactory-solar-roof-01.jpg');
+    background-image: url('./img/factory-plant.png');
 }
     .mapboxgl-popup {
     max-width: 50px;
