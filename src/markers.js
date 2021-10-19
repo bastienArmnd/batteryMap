@@ -2,8 +2,8 @@
 export function generateMarkers(map, openSidebar) {
 
     const layers = [
-        {geojson: './geojson/markers/gigafactories/gigafactory.geojson', url :  './img/gigafactory-icon.png', id: 'gigafactory'},
-        {geojson: './geojson/markers/mines/nickel.geojson', url: './img/nickel-icon.png', id: 'nickel'}
+        {geojson: './geojson/markers/gigafactory.geojson', url :  './img/gigafactory-icon.png', id: 'gigafactory'},
+        {geojson: './geojson/markers/nickel.geojson', url: './img/nickel-icon.png', id: 'nickel'}
     ]
 
     // Create a popup, but don't add it to the map yet.
