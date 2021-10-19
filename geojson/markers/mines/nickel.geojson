@@ -1,0 +1,32 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [ 121.3525, -2.5458333333333 ]
+            },
+            "label": "Sorowako Mine",
+            "description": "Sorowako Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [ 167.0166666, -22.2833322 ]
+            },
+            "label": "Goro Mine",
+            "description": "Goro Mine"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [ 127.94775, 0.47158 ]
+            },
+            "label": "Weda Mine",
+            "description": "Weda Mine"
+        }
+    ]
+}

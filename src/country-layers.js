@@ -4,12 +4,12 @@ export function generateMineralProducers(map){
 
     map.addSource('nickel-producers', {
         type: 'geojson',
-        data: './geojson/nickel-producers-countries.geojson'
+        data: './geojson/countries/nickel-producers-countries.geojson'
     });
 
     map.addSource('cobalt-producers', {
         type: 'geojson',
-        data: './geojson/cobalt-producers-countries.geojson'
+        data: './geojson/countries/cobalt-producers-countries.geojson'
     });
 
     map.addLayer({
@@ -48,7 +48,7 @@ export function generateMineralProducers(map){
 
     map.addSource('aluminium-producers', {
         type: 'geojson',
-        data: './geojson/aluminium-producers-countries.geojson'
+        data: './geojson/countries/aluminium-producers-countries.geojson'
     });
 
     map.addLayer({
