@@ -7,8 +7,11 @@
                 "type": "Point",
                 "coordinates": [ 13.8, 52.4]
             },
-            "label": "Tesla Gigafactory",
-            "description": "Tesla Gigafactory"
+            "properties": {
+                "label": "Tesla Gigafactory",
+                "description": "Tesla Gigafactory"
+            }
+           
         },
         {
             "type": "Feature",
@@ -16,8 +19,10 @@
                 "type": "Point",
                 "coordinates": [ 11.033333, 50.983334]
             },
-            "label": "CATL Gigafactory",
-            "description": "CATL Gigafactory"
+            "properties": {
+                "label": "CATL Gigafactory",
+                "description": "CATL Gigafactory"
+            }
         }
     ]
 }

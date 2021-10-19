@@ -6,6 +6,23 @@ export function generateMarkers(map, openSidebar) {
         {geojson: './geojson/markers/mines/nickel.geojson', url: './img/nickel-icon.png', id: 'nickel'}
     ]
 
+    // Create a popup, but don't add it to the map yet.
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        offset: [0, -25]
+    });
+
+    function onMouseHoverMarker(sourceId) {
+        map.on('mousemove', sourceId, (e) => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+    }
+    function offMouseHoverMarker(sourceId) {
+        map.on('mouseleave', sourceId, () => {
+            map.getCanvas().style.cursor = '';
+        });
+    }
+
     Promise.all(
         layers.map(img => new Promise((resolve, reject) => {
             map.loadImage(img.url, function (error, image) {
@@ -32,6 +49,35 @@ export function generateMarkers(map, openSidebar) {
                 'icon-size': 0.1,
                 'icon-allow-overlap': true
             }
-        })
+        });
+
+        map.on('click', img.id, (e) => {
+
+            // generate new popup for new click
+            popup = new mapboxgl.Popup({
+                closeButton: false,
+                offset: [0, -25]
+            });
+
+            // fly map to click coordinates
+            map.flyTo({
+                center: e.features[0].geometry.coordinates,
+                speed: 0.4,
+                curve: 1.2, 
+                zoom: 3.5,
+                essential: true 
+            });
+
+            openSidebar();
+
+            // Display a popup with the name of the site
+            popup.setLngLat(e.features[0].geometry.coordinates)
+                .setText(e.features[0].properties.label)
+                .addTo(map);
+
+        });
+
+        onMouseHoverMarker(img.id);
+        offMouseHoverMarker(img.id);
     }));
 }
