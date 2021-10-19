@@ -46,6 +46,28 @@ export function generateMineralProducers(map){
         }
     });
 
+    map.addSource('aluminium-producers', {
+        type: 'geojson',
+        data: './geojson/aluminium-producers-countries.geojson'
+    });
+
+    map.addLayer({
+        'id': 'aluminium-producers',
+        'type': 'fill',
+        'source': 'aluminium-producers',
+        'layout': {},
+        "maxzoom": 3,
+        'paint': {
+            'fill-color': '#D7C5E2',
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                0.2,
+                0.5
+            ]
+        }
+    });
+
     map.on('mouseenter', 'nickel-producers', () => {
         map.getCanvas().style.cursor = 'pointer';
     });
@@ -61,6 +83,15 @@ export function generateMineralProducers(map){
 
     // Change it back to a pointer when it leaves.
     map.on('mouseleave', 'cobalt-producers', () => {
+        map.getCanvas().style.cursor = '';
+    });
+
+    map.on('mouseenter', 'aluminium-producers', () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'aluminium-producers', () => {
         map.getCanvas().style.cursor = '';
     });
 
@@ -92,6 +123,7 @@ export function generateMineralProducers(map){
     
     onMouseHoverCountry('cobalt-producers')
     onMouseHoverCountry('nickel-producers')
+    onMouseHoverCountry('aluminium-producers')
 
     // When the mouse leaves the state-fill layer, update the feature state of the
     // previously hovered feature.
@@ -115,4 +147,6 @@ export function generateMineralProducers(map){
 
     offMouseHoverCountry('nickel-producers')
     offMouseHoverCountry('cobalt-producers')
+    offMouseHoverCountry('aluminium-producers')
+
 }
