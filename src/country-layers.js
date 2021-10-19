@@ -68,31 +68,9 @@ export function generateMineralProducers(map){
         }
     });
 
-    map.on('mouseenter', 'nickel-producers', () => {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-
-    // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'nickel-producers', () => {
-        map.getCanvas().style.cursor = '';
-    });
-
-    map.on('mouseenter', 'cobalt-producers', () => {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-
-    // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'cobalt-producers', () => {
-        map.getCanvas().style.cursor = '';
-    });
-
-    map.on('mouseenter', 'aluminium-producers', () => {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-
-    // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'aluminium-producers', () => {
-        map.getCanvas().style.cursor = '';
+    // Create a popup, but don't add it to the map yet.
+    var popup = new mapboxgl.Popup({
+        closeButton: false
     });
 
     // When the user moves their mouse over the state-fill layer, we'll update the
@@ -118,12 +96,18 @@ export function generateMineralProducers(map){
             }
     
             fillStateFunction(e, sourceId);
+
+            // Single out the first found feature.
+            var feature = e.features[0];
+
+            // Display a popup with the name of the county
+            popup.setLngLat(e.lngLat)
+                .setText(feature.properties.ADMIN)
+                .addTo(map);
+
         });
     }
     
-    onMouseHoverCountry('cobalt-producers')
-    onMouseHoverCountry('nickel-producers')
-    onMouseHoverCountry('aluminium-producers')
 
     // When the mouse leaves the state-fill layer, update the feature state of the
     // previously hovered feature.
@@ -142,11 +126,27 @@ export function generateMineralProducers(map){
             }
     
             emptyStateFunction(sourceId)
+
+            map.getCanvas().style.cursor = '';
+            popup.remove();
         });
     }
 
-    offMouseHoverCountry('nickel-producers')
-    offMouseHoverCountry('cobalt-producers')
-    offMouseHoverCountry('aluminium-producers')
+    function countryHoverEffect(layerName) {
+        // change pointer
+        map.on('mouseenter', layerName, () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+        map.on('mouseleave', layerName, () => {
+            map.getCanvas().style.cursor = '';
+        });
 
+        // change layer opacity
+        onMouseHoverCountry(layerName);
+        offMouseHoverCountry(layerName);
+    }
+
+    countryHoverEffect('nickel-producers');
+    countryHoverEffect('cobalt-producers');
+    countryHoverEffect('aluminium-producers');
 }
