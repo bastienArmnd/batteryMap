@@ -23,6 +23,7 @@ export function generateMarkers(map, openSidebar) {
         });
     }
 
+    // Load all icon images first, then use them to style marker layers
     Promise.all(
         layers.map(img => new Promise((resolve, reject) => {
             map.loadImage(img.url, function (error, image) {
