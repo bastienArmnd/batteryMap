@@ -60,6 +60,11 @@ export function generateMarkers(map, openSidebar) {
                 offset: [0, -25]
             });
 
+            // Display the popup with the name of the site
+            popup.setLngLat(e.features[0].geometry.coordinates)
+                .setText(e.features[0].properties.label)
+                .addTo(map);
+
             // fly map to click coordinates
             map.flyTo({
                 center: e.features[0].geometry.coordinates,
@@ -70,12 +75,6 @@ export function generateMarkers(map, openSidebar) {
             });
 
             openSidebar();
-
-            // Display a popup with the name of the site
-            popup.setLngLat(e.features[0].geometry.coordinates)
-                .setText(e.features[0].properties.label)
-                .addTo(map);
-
         });
 
         onMouseHoverMarker(img.id);
