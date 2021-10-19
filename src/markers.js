@@ -46,7 +46,7 @@ export function generateMarkers(map, openSidebar) {
             'source': img.id, // reference the data source
             'layout': {
                 'icon-image': img.id, // reference the image
-                'icon-size': 0.1,
+                'icon-size': 0.4,
                 'icon-allow-overlap': true
             }
         });
