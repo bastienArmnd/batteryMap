@@ -70,7 +70,8 @@ export function generateMineralProducers(map){
 
     // Create a popup, but don't add it to the map yet.
     var popup = new mapboxgl.Popup({
-        closeButton: false
+        closeButton: false,
+        offset: [0, -15]
     });
 
     // When the user moves their mouse over the state-fill layer, we'll update the
