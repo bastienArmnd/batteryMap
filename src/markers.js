@@ -1,50 +1,83 @@
 
 export function generateMarkers(map, openSidebar) {
-    const lngLatSorowako = [121.3525, -2.5458333333333];
-    const lngLatGoro = [167.0166666, -22.2833322];
-    const lngLatWeda = [127.94775, 0.47158];
-    const lngLatTesla = [13.8, 52.4];
-    const lngLatCatl = [11.033333, 50.983334];
-    
-    // create the popup
-    const popupSorowako = new mapboxgl.Popup({ offset: 30 }).setText(
-        'Sorowako Mine Environmental Impacts Air pollution Biodiversity loss (wildlife, agro-diversity) Desertification/Drought, Food insecurity (crop damage), Brown zones Loss of landscape/aesthetic degradation'
-    );
-    const popupGoro = new mapboxgl.Popup({ offset: 30 }).setText(
-        'Goro Mine'
-    );
-    const popupWeda = new mapboxgl.Popup({ offset: 25 }).setText(
-        'Weda Bay Mine'
-    );
-    const popupTesla = new mapboxgl.Popup({ offset: 25 }).setText(
-        'Tesla Gigafactory'
-    );
-    const popupCatl = new mapboxgl.Popup({ offset: 25 }).setText(
-        'CATL Gigafactory'
-    );
-    
-    function createMarker(name, popup, lngLat) {
-        const element = document.createElement('div');
-        element.onclick = openSidebar;
-        element.addEventListener('click', () => {
+
+    const layers = [
+        {geojson: './geojson/markers/gigafactory.geojson', url :  './img/gigafactory-icon.png', id: 'gigafactory'},
+        {geojson: './geojson/markers/nickel.geojson', url: './img/nickel-icon.png', id: 'nickel'}
+    ]
+
+    // Create a popup, but don't add it to the map yet.
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        offset: [0, -25]
+    });
+
+    function onMouseHoverMarker(sourceId) {
+        map.on('mousemove', sourceId, (e) => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+    }
+    function offMouseHoverMarker(sourceId) {
+        map.on('mouseleave', sourceId, () => {
+            map.getCanvas().style.cursor = '';
+        });
+    }
+
+    // Load all icon images first, then use them to style marker layers
+    Promise.all(
+        layers.map(img => new Promise((resolve, reject) => {
+            map.loadImage(img.url, function (error, image) {
+                map.addImage(img.id, image)
+                resolve();
+            })
+        }))
+    )
+    .then(
+        layers.forEach(img => {
+        // Add a data source containing one point feature.
+        map.addSource(img.id, {
+            'type': 'geojson',
+            'data': img.geojson
+        }),
+
+        // Add a layer to use the image to represent the data.
+        map.addLayer({
+            'id': img.id,
+            'type': 'symbol',
+            'source': img.id, // reference the data source
+            'layout': {
+                'icon-image': img.id, // reference the image
+                'icon-size': 0.4,
+                'icon-allow-overlap': true
+            }
+        });
+
+        map.on('click', img.id, (e) => {
+
+            // generate new popup for new click
+            popup = new mapboxgl.Popup({
+                closeButton: false,
+                offset: [0, -25]
+            });
+
+            // Display the popup with the name of the site
+            popup.setLngLat(e.features[0].geometry.coordinates)
+                .setText(e.features[0].properties.label)
+                .addTo(map);
+
+            // fly map to click coordinates
             map.flyTo({
-                // center: [lngLat[0] - 20, lngLat[1]],
-                center: lngLat,
+                center: e.features[0].geometry.coordinates,
                 speed: 0.4,
-                curve: 1.2, // change the speed at which it zooms out
+                curve: 1.2, 
                 zoom: 3.5,
                 essential: true 
             });
-        })
-        element.className = 'marker '+name;
-        new mapboxgl.Marker(element)
-            .setLngLat(lngLat)
-            .setPopup(popup)
-            .addTo(map);
-    }
-    createMarker('sorowako', popupSorowako, lngLatSorowako);
-    createMarker('goro', popupGoro, lngLatGoro);
-    createMarker('weda', popupWeda, lngLatWeda);
-    createMarker('tesla', popupTesla, lngLatTesla);
-    createMarker('catl', popupCatl, lngLatCatl);
+
+            openSidebar();
+        });
+
+        onMouseHoverMarker(img.id);
+        offMouseHoverMarker(img.id);
+    }));
 }
