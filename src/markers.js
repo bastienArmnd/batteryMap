@@ -5,6 +5,7 @@ export function generateMarkers(map, openSidebar) {
     const lngLatWeda = [127.94775, 0.47158];
     const lngLatTesla = [13.8, 52.4];
     const lngLatCatl = [11.033333, 50.983334];
+    const lngLatSudbury = [-81.342777, 46.662777];
     
     // create the popup
     const popupSorowako = new mapboxgl.Popup({ offset: 30 }).setText(
@@ -21,6 +22,9 @@ export function generateMarkers(map, openSidebar) {
     );
     const popupCatl = new mapboxgl.Popup({ offset: 25 }).setText(
         'CATL Gigafactory'
+    );
+    const popupSudbury = new mapboxgl.Popup({ offset: 25 }).setText(
+        'Sudbury Mine'
     );
     
     function createMarker(name, popup, lngLat) {
@@ -47,4 +51,5 @@ export function generateMarkers(map, openSidebar) {
     createMarker('weda', popupWeda, lngLatWeda);
     createMarker('tesla', popupTesla, lngLatTesla);
     createMarker('catl', popupCatl, lngLatCatl);
+    createMarker('sudbury', popupSudbury, lngLatSudbury);
 }

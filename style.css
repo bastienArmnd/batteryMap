@@ -117,6 +117,9 @@ a {
 .marker.weda {
     background-image: url('./img/mine-mountain.png');
 }
+.marker.sudbury {
+    background-image: url('./img/mine-mountain.png');
+}
 .marker.tesla {
     background-image: url('./img/factory-plant.png');
 }
