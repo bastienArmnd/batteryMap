@@ -6,7 +6,7 @@ body {
 a {
     color: rgb(0, 0, 0);
     font-family: 'Noto Serif', serif;
-    font-size: 14px;
+    font-size: 12px;
     padding: 5px;
 }
 
@@ -57,12 +57,12 @@ a {
     right: 0px;
     flex-direction: column;
     display:flex;
-    border: 3px solid #8b8b8b;
+    border: 2px solid #8b8b8b;
     border-radius: 1%;
     background-color: rgb(194, 197, 201);
     margin: 40px;
-    width: 260px;
-    height: 120px;
+    width: 220px;
+    height: 100px;
 }
 
 .mineral-info-box {

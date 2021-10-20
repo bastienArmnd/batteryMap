@@ -1,0 +1,28 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [ 13.8, 52.4]
+            },
+            "properties": {
+                "label": "Tesla Gigafactory",
+                "description": "Tesla Gigafactory"
+            }
+           
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [ 11.033333, 50.983334]
+            },
+            "properties": {
+                "label": "CATL Gigafactory",
+                "description": "CATL Gigafactory"
+            }
+        }
+    ]
+}
