@@ -34,7 +34,17 @@
                 "label": "Weda Mine",
                 "description": "Weda Mine"
             }
-            
-        }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [ -80.877777777778, 46.773055555556 ]                
+            },
+            "properties": {
+                "label": "Sudbury Mine",
+                "description": "Sudbury Mine"
+            }
+        }   
     ]
 }
